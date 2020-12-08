@@ -14,20 +14,38 @@ e1 = tkinter.Entry(window)
 tkinter.Label(window, text="First Unique Item").grid(row=1)
 e1.grid(row=1, column=1)
 
+#Create first quanity box
+a1 = tkinter.Entry(window)
+tkinter.Label(window, text="Amount").grid(row=1,column=2)
+a1.grid(row=1, column=3)
+
+
 # Creating text prompt and entry window for the second item
 e2 = tkinter.Entry(window)
 tkinter.Label(window, text="Second Unique Item").grid(row=2)
 e2.grid(row=2, column=1)
+
+a2 = tkinter.Entry(window)
+tkinter.Label(window, text="Amount").grid(row=2,column=2)
+a2.grid(row=2, column=3)
 
 # Creating text prompt and entry window for the third item
 e3 = tkinter.Entry(window)
 tkinter.Label(window, text="Third Unique Item").grid(row=3)
 e3.grid(row=3, column=1)
 
+a3 = tkinter.Entry(window)
+tkinter.Label(window, text="Amount").grid(row=3,column=2)
+a3.grid(row=3, column=3)
+
 # Creating text prompt and entry window for the fourth item
 e4 = tkinter.Entry(window)
 tkinter.Label(window, text="Fourth Unique Item").grid(row=4)
 e4.grid(row=4, column=1)
+
+a4 = tkinter.Entry(window)
+tkinter.Label(window, text="Amount").grid(row=4,column=2)
+a4.grid(row=4, column=3)
 
 #Creating Text Prompt and entry window for the sale price of the item produced from the craft
 product = tkinter.Entry(window)
@@ -42,7 +60,7 @@ minutes.grid(row=7, column=1)
 #Method to calculate profit
 def getProfit():
     saleprice = int(product.get())
-    costToMake = int(e1.get()) + int(e2.get()) + int(e3.get()) + int(e4.get())
+    costToMake = int(e1.get()) * int(a1.get()) + int(e2.get()) * int(a2.get()) + int(e3.get()) * int(a3.get()) + int(e4.get()) * int(a4.get())
     profit = saleprice - costToMake
     epic = 'Your Profit is %d Roubles ' %profit
     tkinter.Label(window, text=epic).grid(row=9)
