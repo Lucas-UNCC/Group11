@@ -4,14 +4,11 @@ from ttkthemes import ThemedStyle
 
 import webbrowser
 
-url = 'https://tarkov-market.com/'
+url = 'https://tarkov-market.com/' #Live Website Tracker
 
 window = tkinter.Tk()  # Create the window
-window['background'] = '#414141'
-window.title("Escape From Tarkov Profit Calculator") # Change The Window Name
 
-style = ThemedStyle(window)
-style.set_theme("equilux")
+window.title("Escape From Tarkov Profit Calculator") # Change The Window Name
 
 ttk.Label(window, text="Enter Unique Item Material Cost").grid(row=0) # First Line to enter
 
@@ -24,7 +21,6 @@ e1.grid(row=1, column=1)
 a1 = ttk.Entry(window)
 ttk.Label(window, text="Amount").grid(row=1,column=2)
 a1.grid(row=1, column=3)
-
 
 # Creating text prompt and entry window for the second item
 e2 = ttk.Entry(window)
@@ -69,12 +65,17 @@ def getProfit():
     costToMake = int(e1.get()) * int(a1.get()) + int(e2.get()) * int(a2.get()) + int(e3.get()) * int(a3.get()) + int(e4.get()) * int(a4.get())
     profit = saleprice - costToMake
     epic = 'Your Profit is %d Roubles ' %profit
-    tkinter.Label(window, text=epic).grid(row=9)
+    ttk.Label(window, text=epic).grid(row=9)
 
     time = float(minutes.get())
     pph = profit / time
     epic2 = 'Your Profit Per Hour is %d Roubles' %pph
-    tkinter.Label(window,text=epic2).grid(row=10)
+    ttk.Label(window,text=epic2).grid(row=10)
+
+def darkMode():
+    window['background'] = '#414141'  # Dark Mode
+    style = ThemedStyle(window)
+    style.set_theme("equilux")
 
 #Button that calls the profit method
 button = ttk.Button(text="Calculate Profit", command=getProfit)
@@ -82,5 +83,11 @@ button.grid(row=8, column=1)
 
 button = ttk.Button(text="Live Market", command = lambda : webbrowser.open_new_tab(url))
 button.grid(row=11,column=1)
+
+button = ttk.Button(text="Dark Mode", command=darkMode)
+button.grid(row=12,column=1)
 window.mainloop()
+
+
+
 
